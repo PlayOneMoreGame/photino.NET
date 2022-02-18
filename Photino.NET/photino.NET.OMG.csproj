@@ -1,0 +1,42 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <Authors>TryPhotino</Authors>
+    <Company>TryPhotino</Company>
+    <Description>.NET 5 app that opens native OS windows hosting web UI on Windows, Mac, and Linux (without Blazor support)</Description>
+    <GenerateNuspecDependsOn>$(GenerateNuspecDependsOn);SetPackageVersion</GenerateNuspecDependsOn>
+    <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
+    <PackageDescription>.NET 5 app that opens native OS windows hosting web UI on Windows, Mac, and Linux (without Blazor support)</PackageDescription>
+    <PackageId>Photino.OMG</PackageId>
+    <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
+    <Product>Photino.OMG</Product>
+    <PackageProjectUrl>https://github.com/tryphotino/photino.NET</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/tryphotino/photino.NET</RepositoryUrl>
+    <TargetFramework>netstandard2.1</TargetFramework>
+    <Title>PhotinoNET</Title>
+    <RootNamespace>PhotinoNET</RootNamespace>
+  </PropertyGroup>
+
+  <Target Name="SetPackageVersion" DependsOnTargets="Build">
+    <PropertyGroup>
+      <PackageVersion>$(Version)</PackageVersion>
+    </PropertyGroup>
+  </Target>
+
+  <ItemGroup>
+    <Content Include="..\..\photino.Native\Photino.Native\x64\Release\Photino.Native.dll" Link="Photino.Native.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <IncludeInPackage>true</IncludeInPackage>
+      <PackagePath>lib\$(TargetFramework)</PackagePath>
+    </Content>
+    <Content Include="..\..\photino.Native\Photino.Native\x64\Release\WebView2Loader.dll" Link="WebView2Loader.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <IncludeInPackage>true</IncludeInPackage>
+      <PackagePath>lib\$(TargetFramework)</PackagePath>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
+  </ItemGroup>
+</Project>
