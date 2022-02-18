@@ -10,8 +10,8 @@
     <PackageId>Photino.OMG</PackageId>
     <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
     <Product>Photino.OMG</Product>
-    <PackageProjectUrl>https://github.com/tryphotino/photino.NET</PackageProjectUrl>
-    <RepositoryUrl>https://github.com/tryphotino/photino.NET</RepositoryUrl>
+    <RepositoryUrl>https://github.com/PlayOneMoreGame/photino.OMG</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
     <TargetFramework>netstandard2.1</TargetFramework>
     <Title>PhotinoNET</Title>
     <RootNamespace>PhotinoNET</RootNamespace>
