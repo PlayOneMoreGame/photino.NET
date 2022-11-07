@@ -31,6 +31,7 @@ namespace PhotinoNET
             UseOsDefaultLocation = true,
             UseOsDefaultSize = true,
             Zoom = 100,
+            GPUDisabled = false,
         };
 
         //Pointers to the type and instance.
@@ -231,6 +232,19 @@ namespace PhotinoNET
                     else
                         Invoke(() => Photino_SetFullScreen(_nativeInstance, value));
                 }
+            }
+        }
+
+        public bool GPUDisabled
+        {
+            get
+            {
+                if (_nativeInstance == IntPtr.Zero)
+                    return _startupParameters.GPUDisabled;
+
+                var gpuDisabled = false;
+                Invoke(() => Photino_GetGPUDisabled(_nativeInstance, out gpuDisabled));
+                return gpuDisabled;
             }
         }
 
@@ -810,7 +824,7 @@ namespace PhotinoNET
 
         //CONSTRUCTOR
         ///<summary>.NET class that represents a native window with a native browser control taking up the entire client area.</summary>
-        public PhotinoWindow(PhotinoWindow parent = null)
+        public PhotinoWindow(PhotinoWindow parent = null, bool DisableGPU = false)
         {
             _dotNetParent = parent;
             _managedThreadId = Thread.CurrentThread.ManagedThreadId;
@@ -837,6 +851,7 @@ namespace PhotinoNET
             _startupParameters.FocusOutHandler = OnFocusOut;
             _startupParameters.WebMessageReceivedHandler = OnWebMessageReceived;
             _startupParameters.CustomSchemeHandler = OnCustomScheme;
+            _startupParameters.GPUDisabled = DisableGPU;
         }
 
 
